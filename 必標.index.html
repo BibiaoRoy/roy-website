@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>必標補滿貸足｜顧問Roy — 政府補助・標案・貸款專家</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:    #12100E;
+  --paper:  #F5F0E8;
+  --cream:  #FAF7F2;
+  --gold:   #C4973A;
+  --gold2:  #E8B84B;
+  --rust:   #B84E2C;
+  --forest: #2A4A3E;
+  --navy:   #1A2A4A;
+  --muted:  #6B6560;
+  --rule:   #D8CFC4;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans TC', sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 9999;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px;
+  opacity: 0.4;
+}
+
+/* ── TOP BAR ── */
+.topbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px;
+  height: 54px;
+  background: rgba(245,240,232,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.topbar-left { display: flex; align-items: center; gap: 20px; }
+.topbar-brand { color: var(--ink); font-weight: 700; font-size: 12px; }
+.topbar-nav { display: flex; gap: 24px; }
+.topbar-nav a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.topbar-nav a:hover { color: var(--gold); }
+.topbar-cta {
+  padding: 7px 18px;
+  background: var(--ink);
+  color: var(--paper);
+  border: none; border-radius: 3px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.topbar-cta:hover { background: var(--gold); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 100px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(196,151,58,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 60%, rgba(42,74,62,0.07) 0%, transparent 60%);
+}
+
+/* Decorative horizontal rules */
+.hero::before, .hero::after {
+  content: '';
+  position: absolute; left: 0; right: 0;
+  height: 1px; background: var(--rule);
+}
+.hero::before { top: 80px; }
+.hero::after { bottom: 0; }
+
+.hero-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+
+.hero-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(48px, 8vw, 96px);
+  line-height: 1.0;
+  text-align: center;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+  opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-title-zh {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(18px, 3vw, 28px);
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 48px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+}
+
+.hero-sub {
+  font-family: 'Noto Serif TC', serif;
+  font-size: clamp(15px, 2.2vw, 20px);
+  text-align: center;
+  max-width: 640px;
+  line-height: 1.9;
+  color: var(--ink);
+  margin-bottom: 60px;
+  opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+}
+.hero-sub strong { color: var(--gold); font-weight: 600; }
+
+.hero-btns {
+  display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;
+  opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+}
+.btn-primary {
+  padding: 16px 40px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 15px; font-weight: 700;
+  border: none; border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+}
+.btn-primary:hover { background: var(--gold); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.btn-line {
+  padding: 16px 40px;
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 15px; font-weight: 500;
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
+}
+.btn-line:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 0; margin-top: 80px;
+  border-top: 1px solid var(--rule);
+  padding-top: 40px;
+  width: 100%; max-width: 680px;
+  opacity: 0; animation: fadeUp 0.8s 1s forwards;
+}
+.stat {
+  flex: 1; text-align: center; padding: 0 20px;
+  border-right: 1px solid var(--rule);
+}
+.stat:last-child { border-right: none; }
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 40px;
+  color: var(--gold);
+  display: block;
+}
+.stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.12em;
+  color: var(--muted); text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* ── SECTION COMMON ── */
+section { padding: 100px 40px; }
+.container { max-width: 960px; margin: 0 auto; }
+.section-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+.section-sub {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 17px; line-height: 1.9;
+  color: var(--muted); max-width: 560px;
+  margin-bottom: 60px;
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap {
+  background: var(--ink); color: var(--paper);
+  padding: 18px 0; overflow: hidden;
+  border-top: 1px solid #2a2520;
+  border-bottom: 1px solid #2a2520;
+}
+.marquee-track {
+  display: flex; gap: 0;
+  animation: marquee 28s linear infinite;
+  white-space: nowrap;
+}
+.marquee-item {
+  font-family: 'Space Mono', monospace;
+  font-size: 12px; letter-spacing: 0.15em;
+  padding: 0 40px; color: rgba(245,240,232,0.6);
+}
+.marquee-item .dot { color: var(--gold2); margin: 0 20px; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ── SERVICES ── */
+.services { background: var(--cream); }
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  border: 1px solid var(--rule);
+}
+.service-card {
+  padding: 48px 36px;
+  background: var(--cream);
+  border-right: 1px solid var(--rule);
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+}
+.service-card:last-child { border-right: none; }
+.service-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--rule);
+  transition: background 0.3s;
+}
+.service-card:hover { background: var(--paper); }
+.service-card:hover::before { background: var(--gold); }
+.service-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 64px; color: var(--rule);
+  line-height: 1; margin-bottom: 24px;
+  transition: color 0.3s;
+}
+.service-card:hover .service-num { color: var(--gold2); }
+.service-icon { font-size: 32px; margin-bottom: 16px; }
+.service-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px; font-weight: 700;
+  margin-bottom: 16px; line-height: 1.4;
+}
+.service-desc {
+  font-size: 14px; line-height: 1.9;
+  color: var(--muted); margin-bottom: 24px;
+}
+.service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  color: var(--muted);
+}
+.service-list { list-style: none; }
+.service-list li {
+  font-size: 13px; line-height: 1.7;
+  color: var(--muted); padding: 5px 0;
+  border-bottom: 1px dashed var(--rule);
+  display: flex; gap: 8px;
+}
+.service-list li:last-child { border-bottom: none; }
+.service-list li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
+
+/* ── HOW IT WORKS ── */
+.process { background: var(--paper); }
+.process-steps { display: grid; gap: 0; }
+.step {
+  display: grid; grid-template-columns: 80px 1fr;
+  border-bottom: 1px solid var(--rule);
+  padding: 40px 0;
+  gap: 32px; align-items: start;
+}
+.step:last-child { border-bottom: none; }
+.step-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 56px; color: var(--rule);
+  line-height: 1; padding-top: 4px;
+}
+.step-content {}
+.step-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px; font-weight: 700;
+  margin-bottom: 10px;
+}
+.step-desc { font-size: 14px; line-height: 1.85; color: var(--muted); }
+.step-badge {
+  display: inline-block; margin-top: 12px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  padding: 4px 12px;
+  background: var(--ink); color: var(--gold2);
+  border-radius: 2px;
+}
+
+/* ── WHY ROY ── */
+.why { background: var(--ink); color: var(--paper); }
+.why .section-title { color: var(--paper); }
+.why .section-sub { color: rgba(245,240,232,0.55); }
+.why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; border: 1px solid rgba(255,255,255,0.08); }
+.why-card {
+  padding: 40px 36px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+}
+.why-card:nth-child(2n) { border-right: none; }
+.why-card:nth-child(n+3) { border-bottom: none; }
+.why-icon { font-size: 28px; margin-bottom: 16px; }
+.why-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px; font-weight: 700;
+  margin-bottom: 12px; color: var(--paper);
+}
+.why-desc { font-size: 14px; line-height: 1.85; color: rgba(245,240,232,0.55); }
+.why-highlight { color: var(--gold2); font-weight: 600; }
+
+/* ── PRICING ── */
+.pricing { background: var(--cream); }
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; border: 1px solid var(--rule); }
+.price-card {
+  padding: 40px 32px;
+  position: relative; overflow: hidden;
+  border-right: 1px solid var(--rule);
+  background: var(--cream);
+  transition: all 0.3s;
+}
+.price-card:last-child { border-right: none; }
+.price-card.featured {
+  background: var(--ink); color: var(--paper);
+}
+.price-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--gold);  margin-bottom: 12px;
+}
+.price-name {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 22px; font-weight: 700;
+  margin-bottom: 6px;
+}
+.price-card.featured .price-name { color: var(--paper); }
+.price-amount {
+  font-family: 'DM Serif Display', serif;
+  font-size: 36px; margin: 20px 0 6px;
+  color: var(--gold);
+}
+.price-note { font-size: 12px; color: var(--muted); margin-bottom: 28px; }
+.price-card.featured .price-note { color: rgba(245,240,232,0.5); }
+.price-features { list-style: none; }
+.price-features li {
+  font-size: 13px; padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex; gap: 10px; align-items: flex-start;
+  line-height: 1.5;
+}
+.price-card.featured .price-features li { border-bottom-color: rgba(255,255,255,0.1); color: rgba(245,240,232,0.8); }
+.price-features li::before { content: '✓'; color: var(--gold); flex-shrink: 0; font-weight: 700; }
+.price-cta {
+  display: block; margin-top: 28px;
+  padding: 13px;
+  text-align: center;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 14px; font-weight: 700;
+  border: 1.5px solid var(--ink);
+  border-radius: 3px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.price-card.featured .price-cta { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+.price-cta:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); transform: translateY(-1px); }
+.price-card.featured .price-cta:hover { background: var(--gold2); border-color: var(--gold2); color: var(--ink); }
+
+/* ── TESTIMONIALS ── */
+.testimonials { background: var(--paper); }
+.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; border: 1px solid var(--rule); }
+.testi-card {
+  padding: 36px 32px;
+  border-right: 1px solid var(--rule);
+  background: var(--paper);
+}
+.testi-card:last-child { border-right: none; }
+.testi-quote {
+  font-family: 'DM Serif Display', serif;
+  font-size: 52px; color: var(--gold2);
+  line-height: 1; margin-bottom: 12px;
+}
+.testi-text {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 15px; line-height: 1.85;
+  margin-bottom: 24px; color: var(--ink);
+}
+.testi-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.testi-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px; color: var(--gold2); flex-shrink: 0;
+}
+.testi-name { font-size: 13px; font-weight: 700; }
+.testi-company { font-size: 12px; color: var(--muted); }
+
+/* ── FAQ ── */
+.faq { background: var(--cream); }
+.faq-list { border-top: 1px solid var(--rule); }
+.faq-item { border-bottom: 1px solid var(--rule); }
+.faq-q {
+  width: 100%; text-align: left;
+  padding: 24px 0;
+  display: flex; justify-content: space-between; align-items: center;
+  background: none; border: none; cursor: pointer;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 17px; font-weight: 700; color: var(--ink);
+  gap: 20px;
+}
+.faq-arrow { font-size: 20px; color: var(--gold); transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.open .faq-arrow { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s;
+  font-size: 15px; line-height: 1.9; color: var(--muted);
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
+
+/* ── CTA SECTION ── */
+.cta-section {
+  background: var(--forest);
+  padding: 120px 40px;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(196,151,58,0.12) 0%, transparent 70%);
+}
+.cta-tag { color: var(--gold2); }
+.cta-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 6vw, 68px);
+  color: var(--paper); line-height: 1.1;
+  margin-bottom: 24px; position: relative;
+}
+.cta-title em { font-style: italic; color: var(--gold2); }
+.cta-sub {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 18px; color: rgba(245,240,232,0.65);
+  margin-bottom: 48px; line-height: 1.8;
+}
+.cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; position: relative; }
+.btn-cta-main {
+  padding: 18px 48px;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 16px; font-weight: 700;
+  border: none; border-radius: 3px;
+  cursor: pointer; text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-cta-main:hover { background: var(--gold2); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
+.btn-cta-line {
+  padding: 18px 48px;
+  background: transparent;
+  color: var(--paper);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 16px; font-weight: 500;
+  border: 1.5px solid rgba(245,240,232,0.4);
+  border-radius: 3px;
+  cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px;
+  transition: all 0.2s;
+}
+.btn-cta-line:hover { border-color: var(--paper); transform: translateY(-2px); }
+
+/* ── CONTACT STRIP ── */
+.contact-strip {
+  background: var(--paper);
+  border-top: 1px solid var(--rule);
+  padding: 60px 40px;
+}
+.contact-inner {
+  max-width: 960px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 32px;
+}
+.contact-info h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px; margin-bottom: 8px;
+}
+.contact-channels { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+.channel {
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px; color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.channel:hover { color: var(--gold); }
+.channel-icon { font-size: 18px; }
+.contact-quote {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 15px; line-height: 1.9;
+  color: var(--muted); max-width: 360px;
+  border-left: 3px solid var(--gold);
+  padding-left: 20px;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink); color: rgba(245,240,232,0.4);
+  padding: 32px 40px;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+}
+footer .footer-brand { color: var(--paper); font-weight: 700; }
+footer a { color: rgba(245,240,232,0.4); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── FLOATING CONTACT BUBBLE ── */
+.float-bubble {
+  position: fixed; bottom: 32px; right: 32px; z-index: 200;
+  width: 56px; height: 56px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+.float-bubble:hover { transform: scale(1.1) translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
+.float-bubble-label {
+  position: absolute; right: 68px;
+  background: var(--ink); color: var(--paper);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; padding: 6px 12px;
+  border-radius: 3px; white-space: nowrap;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.2s;
+}
+.float-bubble:hover .float-bubble-label { opacity: 1; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .topbar-nav { display: none; }
+  .services-grid, .pricing-grid, .testi-grid, .why-grid { grid-template-columns: 1fr; }
+  .service-card, .price-card, .testi-card { border-right: none; border-bottom: 1px solid var(--rule); }
+  .why-card { border-right: none; }
+  section { padding: 70px 24px; }
+  .hero { padding: 100px 24px 70px; }
+  .contact-inner { flex-direction: column; }
+  .step { grid-template-columns: 50px 1fr; gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<nav class="topbar">
+  <div class="topbar-left">
+    <span class="topbar-brand">ROY ✦ 必標補滿貸足</span>
+    <nav class="topbar-nav">
+      <a href="#services">服務項目</a>
+      <a href="#process">服務流程</a>
+      <a href="#pricing">費用方案</a>
+      <a href="#faq">常見問題</a>
+    </nav>
+  </div>
+  <a href="https://line.me/R/ti/p/@orw4753q" class="topbar-cta" target="_blank">立即免費諮詢 →</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div style="position:relative; z-index:1; text-align:center; width:100%;">
+    <p class="hero-tag">✦ 台灣中小企業資金特攻隊 ✦</p>
+    <h1 class="hero-title">必標．補滿．<em>貸足</em></h1>
+    <p class="hero-title-zh">顧問 Roy｜政府補助 × 標案申請 × 貸款規劃</p>
+    <p class="hero-sub">
+      政府的錢就在那裡，<strong>與其讓別人領走</strong>，<br>
+      不如讓我們幫您把它拿好、拿滿、拿得心安理得。
+    </p>
+    <div class="hero-btns">
+      <a href="https://line.me/R/ti/p/@orw4753q" class="btn-primary" target="_blank">💬 LINE 免費諮詢</a>
+      <a href="#services" class="btn-line">了解服務項目</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">100</span>
+        <span class="stat-label">SOP 系統評分</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3</span>
+        <span class="stat-label">核心服務戰線</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">48H</span>
+        <span class="stat-label">初稿交件速度</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">0</span>
+        <span class="stat-label">廢標風險保證</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">SBIR 中央研發補助<span class="dot">✦</span></span>
+    <span class="marquee-item">SITI 台北市產業補助<span class="dot">✦</span></span>
+    <span class="marquee-item">ESG 碳盤查輔導<span class="dot">✦</span></span>
+    <span class="marquee-item">政策性低利貸款<span class="dot">✦</span></span>
+    <span class="marquee-item">信保基金融資<span class="dot">✦</span></span>
+    <span class="marquee-item">勞務小標案<span class="dot">✦</span></span>
+    <span class="marquee-item">地方創生補助<span class="dot">✦</span></span>
+    <span class="marquee-item">新北市製造業接班<span class="dot">✦</span></span>
+    <span class="marquee-item">青創貸款<span class="dot">✦</span></span>
+    <span class="marquee-item">驗收結案防禦<span class="dot">✦</span></span>
+    <span class="marquee-item">SBIR 中央研發補助<span class="dot">✦</span></span>
+    <span class="marquee-item">SITI 台北市產業補助<span class="dot">✦</span></span>
+    <span class="marquee-item">ESG 碳盤查輔導<span class="dot">✦</span></span>
+    <span class="marquee-item">政策性低利貸款<span class="dot">✦</span></span>
+    <span class="marquee-item">信保基金融資<span class="dot">✦</span></span>
+    <span class="marquee-item">勞務小標案<span class="dot">✦</span></span>
+    <span class="marquee-item">地方創生補助<span class="dot">✦</span></span>
+    <span class="marquee-item">新北市製造業接班<span class="dot">✦</span></span>
+    <span class="marquee-item">青創貸款<span class="dot">✦</span></span>
+    <span class="marquee-item">驗收結案防禦<span class="dot">✦</span></span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <p class="section-tag reveal">✦ Core Services</p>
+    <h2 class="section-title reveal">三大核心戰線，<br><em>資金補好補滿</em></h2>
+    <p class="section-sub reveal">從政府補助、標案得標，到融資貸款，我們用 AI 驅動的系統化方法，讓每一分政府預算都精準落入您的口袋。</p>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <div class="service-icon">🏛️</div>
+        <h3 class="service-name">政府補助案申請</h3>
+        <p class="service-desc">精準媒合最適合您的補助計畫，從策略到結案全程陪跑，確保款項入袋。</p>
+        <div class="service-tags">
+          <span class="tag">SBIR</span><span class="tag">SITI</span><span class="tag">SIIR</span>
+          <span class="tag">ESG碳盤查</span><span class="tag">地方創生</span>
+        </div>
+        <ul class="service-list">
+          <li>資格適格性快速預審（24小時）</li>
+          <li>申請計畫書全程代撰</li>
+          <li>KPI 設定與驗收風險控管</li>
+          <li>結案審計防禦輔導</li>
+          <li>下一期補助案超前部署</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon">📋</div>
+        <h3 class="service-name">政府標案申請</h3>
+        <p class="service-desc">獨家「必標」三層審查機制，優化服務建議書，行政零廢標，提升獲標勝率。</p>
+        <div class="service-tags">
+          <span class="tag">勞務標</span><span class="tag">AI應用標</span><span class="tag">ESG標案</span>
+          <span class="tag">地方政府</span>
+        </div>
+        <ul class="service-list">
+          <li>RFP 快速掃描與廢標風險診斷</li>
+          <li>服務建議書 STAR 格式撰寫</li>
+          <li>三套緊急應變 SOP 建立</li>
+          <li>評選委員問答模擬演練</li>
+          <li>實體裝訂清單逐項確認</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon">💰</div>
+        <h3 class="service-name">貸款諮詢・方案優化</h3>
+        <p class="service-desc">善用政策性低利貸款與信保基金，政府合約為擔保，打造最強現金流。</p>
+        <div class="service-tags">
+          <span class="tag">信保基金</span><span class="tag">青創貸款</span><span class="tag">政策低利貸款</span>
+        </div>
+        <ul class="service-list">
+          <li>財務體質預審與信用評估</li>
+          <li>貸款商品精準媒合（銀行比較）</li>
+          <li>標案合約槓桿融資申請</li>
+          <li>三位一體財務試算（標案+補助+融資）</li>
+          <li>還款計畫與現金流優化</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+  <div class="container">
+    <p class="section-tag reveal">✦ How It Works</p>
+    <h2 class="section-title reveal">簡單五步驟，<br><em>讓錢自動來找你</em></h2>
+    <p class="section-sub reveal">我們把複雜的政府申請流程，化為清晰的五個階段，每個階段都有明確交付物和時間承諾。</p>
+    <div class="process-steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3 class="step-title">免費企業體質診斷（30分鐘）</h3>
+          <p class="step-desc">透過 LINE 視訊或表單，快速確認您的公司設籍地、資本額、員工數、欠稅狀況等關鍵資格。我們在 24 小時內告訴您：最適合您的補助案/標案是哪幾個，以及成功機率預估。</p>
+          <span class="step-badge">⚡ 24H 回覆</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3 class="step-title">策略制定・簽約啟動</h3>
+          <p class="step-desc">確認合作方案後，我們提供完整的《標案顧問服務合約》保障雙方權益，前金確認後 48 小時內正式啟動。合約明確規範工作範圍、修改次數、費用結構與責任限制。</p>
+          <span class="step-badge">🛡️ 合約保障</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3 class="step-title">深度訪談・資料收集</h3>
+          <p class="step-desc">透過 LINE 視訊進行「腦力壓榨訪談」（60分鐘），把您腦袋裡的技術優勢和過往實績，轉化成評委看得懂、評分機制喜歡的語言。我們有系統性的訪談框架，您只需要回答問題。</p>
+          <span class="step-badge">🎙️ 專業訪談框架</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3 class="step-title">文件撰寫・三層品管</h3>
+          <p class="step-desc">初稿在 D+5 交付，包含完整章節架構。經過 AI 審查 × 法規合規掃描 × 人工複審三層品管後，確保每一份文件都能通過行政審查，不讓廢標風險浮現在最後一刻。</p>
+          <span class="step-badge">📝 D+5 初稿交件</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">05</div>
+        <div class="step-content">
+          <h3 class="step-title">修改定稿・評選輔導・送件</h3>
+          <p class="step-desc">含兩次修改，定稿後提供評選現場「5題魔鬼提問」演練和簡報腳本。截標當日全天待機支援，讓您走進評選室時自信滿滿。結案後提供後續補助串聯建議。</p>
+          <span class="step-badge">🏆 截標日全天待機</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ROY -->
+<section class="why" id="why">
+  <div class="container">
+    <p class="section-tag reveal">✦ Why Roy</p>
+    <h2 class="section-title reveal">為什麼選擇 必標？<br><em>不是吹噓，是差異</em></h2>
+    <p class="section-sub reveal">傳統顧問公司做你做的事要 2–3 週；我們 48 小時出初稿。這不是魔法，是系統。</p>
+    <div class="why-grid reveal">
+      <div class="why-card">
+        <div class="why-icon">⚡</div>
+        <h3 class="why-title">速度：傳統的3倍</h3>
+        <p class="why-desc">AI 驅動的撰寫系統讓初稿從傳統 14 天壓縮到 <span class="why-highlight">48 小時</span>。截標日快到了？我們反而是你最後一道防線。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🛡️</div>
+        <h3 class="why-title">行政零廢標保證</h3>
+        <p class="why-desc">傳統廠商廢標率 15–20%，我們的魔鬼審查機逐條掃描 <span class="why-highlight">50 個廢標風險點</span>，讓你在行政關過得風輕雲淡。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h3 class="why-title">三位一體財務串聯</h3>
+        <p class="why-desc">市場上唯一同時整合「標案 + 補助 + 融資」的顧問服務。政府合約可以當抵押品借低利資金，<span class="why-highlight">一個案子賺三份</span>。</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎯</div>
+        <h3 class="why-title">一對一專屬服務</h3>
+        <p class="why-desc">幫忙客戶解決細部特別問題，<span class="why-highlight">高效、精準</span>，確保服務品質。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <p class="section-tag reveal">✦ Service Plans</p>
+    <h2 class="section-title reveal">透明定價，<br><em>沒有隱藏費用</em></h2>
+    <p class="section-sub reveal">所有方案均採「前金啟動，成功報酬後付」模式。您的利益就是我們的利益。</p>
+    <div class="pricing-grid reveal">
+      <div class="price-card">
+        <p class="price-label">✦ Plan A</p>
+        <h3 class="price-name">戰略診斷</h3>
+        <div class="price-amount">NT$3,000<span style="font-size:18px;color:var(--muted)"> 起</span></div>
+        <p class="price-note">適合：初次評估，尚未決定是否投標</p>
+        <ul class="price-features">
+          <li>RFP 快速掃描（5大生死關鍵）</li>
+          <li>行政門檻適格性診斷</li>
+          <li>競爭態勢初步評估</li>
+          <li>投/不投/觀望 專業建議報告</li>
+          <li>48小時內交件</li>
+        </ul>
+        <a href="https://line.me/R/ti/p/@orw4753q" class="price-cta" target="_blank">開始諮詢</a>
+      </div>
+      <div class="price-card featured">
+        <p class="price-label">✦ Plan B — 最受歡迎</p>
+        <h3 class="price-name">奪標全包</h3>
+        <div class="price-amount">NT$45,000<span style="font-size:18px;color:rgba(245,240,232,0.5)"> 起</span></div>
+        <p class="price-note">前金 50% 啟動 + 成功報酬 5%（市場標準行情）</p>
+        <ul class="price-features">
+          <li>包含 Plan A 全部服務</li>
+          <li>服務建議書完整撰寫</li>
+          <li>三套緊急應變 SOP</li>
+          <li>採購法合規逐條審查</li>
+          <li>評選問答演練 × 5題</li>
+          <li>簡報腳本大綱（10分鐘版）</li>
+          <li>計畫書修改 × 2次</li>
+          <li>截標日全天待機支援</li>
+        </ul>
+        <a href="https://line.me/R/ti/p/@orw4753q" class="price-cta" target="_blank">立即預約</a>
+      </div>
+      <div class="price-card">
+        <p class="price-label">✦ Plan C</p>
+        <h3 class="price-name">年度顧問陪跑</h3>
+        <div class="price-amount">NT$25,000<span style="font-size:18px;color:var(--muted)">/月 起</span></div>
+        <p class="price-note">適合：每年有 3 個以上案件需求（年繳享 9 折）</p>
+        <ul class="price-features">
+          <li>包含 Plan B 全部服務</li>
+          <li>年度無限次診斷諮詢</li>
+          <li>三位一體財務試算</li>
+          <li>融資包裝邏輯建議</li>
+          <li>結案審計防禦輔導</li>
+          <li>月度標案情報報告</li>
+          <li>LINE 即時諮詢（平日）</li>
+        </ul>
+        <a href="https://line.me/R/ti/p/@orw4753q" class="price-cta" target="_blank">了解更多</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:32px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.1em;">所有費用均不含稅。正式報價請透過 LINE 洽詢，依案件複雜度調整。</p>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <p class="section-tag reveal">✦ Client Voices</p>
+    <h2 class="section-title reveal">老闆們<em>說的話</em></h2>
+    <div class="testi-grid reveal">
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">我們自己寫了兩次都廢標，找 Roy 第一次就過了。最讓我驚訝的是他 48 小時就出了初稿，比我們內部員工快三倍，文件品質還完全不同等級。</p>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">新北市製造業　陳總</div>
+            <div class="testi-company">勞務標案 NT$180萬，成功得標</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">本來只是來問 SITI 補助，結果 Roy 告訴我同時可以申請信保基金貸款，用補助核定函當擔保。最後補助拿到、貸款也核了，現金流直接翻倍。</p>
+        <div class="testi-author">
+          <div class="testi-avatar">B</div>
+          <div>
+            <div class="testi-name">台北市科技業　林執行長</div>
+            <div class="testi-company">SITI補助核定 + 融資 NT$300萬</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote">"</div>
+        <p class="testi-text">評選委員問了一個我完全沒想到的問題，但 Roy 提前幫我練習了五題魔鬼提問，其中就有這題。當場面不改色回答完，委員點頭。那一刻我知道我穩了。</p>
+        <div class="testi-author">
+          <div class="testi-avatar">C</div>
+          <div>
+            <div class="testi-name">新北市服務業　王老闆</div>
+            <div class="testi-company">最有利標 NT$420萬，評選第一名</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.1em;">以上案例均已去識別化，客戶已授權作為服務說明之參考。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <p class="section-tag reveal">✦ FAQ</p>
+    <h2 class="section-title reveal">您一定想問的<br><em>8 個問題</em></h2>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          顧問費這麼高，如果沒得標，錢不就白花了？
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">顧問費（前金）是您購買「專業撰寫服務」的對價，跟得標結果是兩件事。就像請律師打官司，律師費不是贏了才付；但正因為有律師，你贏的機率大幅提升。我們的服務讓您的文件品質從「被忽略」到「被記住」，這個升級本身就有價值。而成功報酬（獎金）只在得標後才收，真正做到利益與您綁定。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          我公司只有成立 1 年，可以申請補助嗎？
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">可以，但需要選對計畫。部分補助（如 SBIR Phase 1）對年資要求寬鬆；SITI 台北市補助也無年資限制。某些標案則要求成立 2 年以上。這正是「資格預審」的重要性——在花時間做文件前，先確認您能不能參加。請透過 LINE 告訴我們您的基本資料，24 小時內給您明確答案。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          服務過程需要我提供哪些資料？
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">主要是：公司基本資料（登記謄本）、過往實績（驗收合格單或合約封面）、技術能力佐證（證照、專利）、財務概況。我們會提供結構化的「企業體質診斷清單」，您按清單填寫即可，不需要一個個回答問題。整個資料收集過程約 1-2 小時。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          你們同時服務幾家公司？會不會洩漏我的資訊？
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">針對同一個標案，我們絕對只服務一家廠商（這也是我們的合約條款之一，防止陪標風險）。所有客戶資料受《保密協議（NDA）》保護，服務結束後 30 天內銷毀電子資料。我們的商業模式建立在長期信任上，洩漏客戶資料等於自毀基業。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          什麼是「三位一體」財務串聯？
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">這是我們獨有的財務策略：① 標案得標 → 政府背書收款，現金流確定 → ② 憑此申請補助案，純利入帳 → ③ 以政府合約為擔保，向銀行/信保基金申請低利貸款，槓桿擴大資金。很多公司有標案卻不知道可以串聯補助和融資，平白少拿了幾百萬。我們的 Plan B 以上均包含三位一體試算。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          如果截標日很緊，你們來得及嗎？
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">我們的標準流程是 18 天（含甲方審閱時間）。若截標距今不足 18 天，請立刻聯繫我們評估壓縮可行性。最緊的案子我們服務過截標前 7 天啟動的——代價是雙方都要高度配合，甲方資料必須 24 小時內到齊。緊急案件會有加急費用（依狀況報價）。記住：越早找我們，你的勝率越高。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          你們真的不保證得標，那找你們有什麼用？
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">任何說「保證得標」的顧問都在說謊——標案結果由評選委員決定，任何人都無法控制。我們能保證的是：① 行政文件零廢標（合規審查機制）② 文件品質大幅提升（STAR格式、逐條對應RFP）③ 評選現場有充分準備（問答演練）。這三點讓您的實質勝率從「憑運氣」變成「有優勢」。我們收費，但收的是讓您更有機會贏的費用。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          我沒有任何政府標案或補助的經驗，可以從頭開始嗎？
+          <span class="faq-arrow">+</span>
+        </button>
+        <div class="faq-a">可以，而且這正是最適合找我們的時機。沒有過往記錄反而是白紙，我們從「企業體質診斷」開始，為您規劃最適合的入門路線（通常建議從補助案或勞務小標開始，建立政府往來記錄）。許多客戶第一次就是透過我們認識政府採購的遊戲規則，之後成為長期合作的回頭客。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <p class="section-tag cta-tag reveal">✦ Ready to Start</p>
+    <h2 class="cta-title reveal">現在，善用政府的錢<br><em>為您工作!</em></h2>
+    <p class="cta-sub reveal">第一次諮詢完全免費。30 分鐘告訴您：哪些補助/標案適合您，成功機率多高，以及第一步怎麼走。</p>
+    <div class="cta-btns reveal">
+      <a href="https://line.me/R/ti/p/@orw4753q" class="btn-cta-main" target="_blank">💬 LINE 免費諮詢 @orw4753q</a>
+      <a href="https://www.facebook.com/profile.php?id=61584985798523" class="btn-cta-line" target="_blank">👍 FB 粉絲專頁</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <h3>顧問 Roy</h3>
+      <p style="font-size:14px;color:var(--muted);margin-top:4px;">必標補滿貸足｜企業資金特攻隊</p>
+      <div class="contact-channels">
+        <a href="https://line.me/R/ti/p/@orw4753q" class="channel" target="_blank">
+          <span class="channel-icon">💬</span> LINE @orw4753q
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61584985798523" class="channel" target="_blank">
+          <span class="channel-icon">📘</span> Facebook 官方粉專
+        </a>
+      </div>
+      <p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);margin-top:16px;letter-spacing:0.06em;">服務時間：週一至週五 09:00–20:00 ｜ 週六 10:00–17:00</p>
+    </div>
+    <blockquote class="contact-quote">
+      政府的錢就在那裡，與其讓別人領走，不如我們幫您拿好拿滿。<br><br>
+      — 顧問 Roy
+    </blockquote>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span><span class="footer-brand">必標補滿貸足｜Roy 顧問</span></span>
+  <span>本網站內容僅供參考，顧問服務不保證申請結果。實際費用依個案議定。</span>
+  <span>
+    <a href="https://line.me/R/ti/p/@orw4753q" target="_blank">LINE</a> &nbsp;·&nbsp;
+    <a href="https://www.facebook.com/profile.php?id=61584985798523" target="_blank">Facebook</a>
+  </span>
+</footer>
+
+<!-- FLOATING BUBBLE -->
+<a href="https://line.me/R/ti/p/@orw4753q" class="float-bubble" target="_blank">
+  <div class="float-bubble-label">LINE 免費諮詢</div>
+  💬
+</a>
+
+<script>
+// FAQ toggle
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => obs.observe(el));
+
+// Stagger children within revealed parent
+document.querySelectorAll('.services-grid, .why-grid, .pricing-grid, .testi-grid').forEach(grid => {
+  grid.querySelectorAll(':scope > *').forEach((child, i) => {
+    child.style.transitionDelay = `${i * 0.1}s`;
+  });
+});
+</script>
+</body>
+</html>
