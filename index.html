@@ -601,16 +601,212 @@ footer a:hover { color: var(--gold); }
 }
 .float-bubble:hover .float-bubble-label { opacity: 1; }
 
-/* ── RESPONSIVE ── */
+/* ── LEAD MAGNET ── */
+.lead-magnet {
+  background: var(--ink);
+  padding: 80px 40px;
+}
+.lead-magnet .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+.lm-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: 0.2em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.lm-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  color: var(--paper);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.lm-title em { font-style: italic; color: var(--gold); }
+.lm-desc {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px; line-height: 1.9;
+  color: rgba(245,240,232,0.65);
+  margin-bottom: 32px;
+}
+.lm-list {
+  list-style: none;
+  margin-bottom: 36px;
+}
+.lm-list li {
+  font-size: 14px;
+  color: rgba(245,240,232,0.8);
+  padding: 8px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.1);
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.lm-list li::before { content: '✦'; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+.lm-form-box {
+  background: rgba(245,240,232,0.06);
+  border: 1px solid rgba(245,240,232,0.12);
+  border-radius: 8px;
+  padding: 40px 36px;
+}
+.lm-form-box h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 20px; font-weight: 700;
+  color: var(--paper);
+  margin-bottom: 6px;
+}
+.lm-form-box p {
+  font-size: 13px;
+  color: rgba(245,240,232,0.5);
+  margin-bottom: 28px;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.05em;
+}
+.lm-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(245,240,232,0.08);
+  border: 1px solid rgba(245,240,232,0.15);
+  border-radius: 4px;
+  color: var(--paper);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 14px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.lm-input::placeholder { color: rgba(245,240,232,0.3); }
+.lm-input:focus { border-color: var(--gold); }
+.lm-submit {
+  width: 100%;
+  padding: 16px;
+  background: var(--gold);
+  color: var(--ink);
+  border: none; border-radius: 4px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 15px; font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+.lm-submit:hover { background: var(--gold2); transform: translateY(-1px); }
+.lm-privacy {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(245,240,232,0.3);
+  margin-top: 14px;
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.04em;
+}
+.lm-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px;
+  background: rgba(196,151,58,0.15);
+  border: 1px solid rgba(196,151,58,0.3);
+  border-radius: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+/* ── BLOG ── */
+.blog { background: var(--cream); }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 0;
+}
+.blog-card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.25s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--gold); }
+.blog-card-top {
+  padding: 28px 28px 20px;
+  border-bottom: 1px solid var(--rule);
+}
+.blog-cat {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.15em;
+  color: var(--gold); text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+.blog-title {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 17px; font-weight: 700;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.blog-excerpt {
+  font-size: 13px; line-height: 1.8;
+  color: var(--muted);
+}
+.blog-card-bottom {
+  padding: 16px 28px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.blog-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.blog-read-more {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px; letter-spacing: 0.1em;
+  color: var(--gold);
+  display: flex; align-items: center; gap: 4px;
+}
+.blog-featured {
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: var(--ink);
+  border: none;
+  margin-bottom: 8px;
+}
+.blog-featured:hover { border-color: transparent; }
+.blog-featured-img {
+  background: linear-gradient(135deg, rgba(196,151,58,0.2) 0%, rgba(42,74,62,0.3) 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px; padding: 60px;
+}
+.blog-featured-body { padding: 48px 44px; }
+.blog-featured-body .blog-cat { color: var(--gold2); }
+.blog-featured-body .blog-title { color: var(--paper); font-size: 24px; margin-bottom: 16px; }
+.blog-featured-body .blog-excerpt { color: rgba(245,240,232,0.6); font-size: 14px; margin-bottom: 28px; }
+.blog-more-btn {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 13px 32px;
+  border: 1.5px solid var(--rule);
+  border-radius: 3px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px; letter-spacing: 0.1em;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.blog-more-btn:hover { border-color: var(--gold); color: var(--gold); }
+
 @media (max-width: 768px) {
-  .topbar-nav { display: none; }
-  .services-grid, .pricing-grid, .testi-grid, .why-grid { grid-template-columns: 1fr; }
-  .service-card, .price-card, .testi-card { border-right: none; border-bottom: 1px solid var(--rule); }
-  .why-card { border-right: none; }
-  section { padding: 70px 24px; }
-  .hero { padding: 100px 24px 70px; }
-  .contact-inner { flex-direction: column; }
-  .step { grid-template-columns: 50px 1fr; gap: 20px; }
+  .lead-magnet .container { grid-template-columns: 1fr; gap: 40px; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-featured { grid-column: span 1; grid-template-columns: 1fr; }
+  .blog-featured-img { display: none; }
 }
 </style>
 </head>
@@ -624,10 +820,14 @@ footer a:hover { color: var(--gold); }
       <a href="#services">服務項目</a>
       <a href="#process">服務流程</a>
       <a href="#pricing">費用方案</a>
+      <a href="#blog">文章</a>
       <a href="#faq">常見問題</a>
     </nav>
   </div>
-  <a href="https://line.me/R/ti/p/@orw4753q" class="topbar-cta" target="_blank">立即免費諮詢 →</a>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <a href="#lead-magnet" class="topbar-cta" style="background:var(--gold);color:var(--paper);">📄 免費領取報告</a>
+    <a href="https://line.me/R/ti/p/@orw4753q" class="topbar-cta" target="_blank">立即免費諮詢 →</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -691,6 +891,33 @@ footer a:hover { color: var(--gold); }
     <span class="marquee-item">驗收結案防禦<span class="dot">✦</span></span>
   </div>
 </div>
+
+<!-- LEAD MAGNET -->
+<section class="lead-magnet" id="lead-magnet">
+  <div class="container">
+    <div>
+      <div class="lm-badge">✦ 免費索取 · 限時提供</div>
+      <p class="lm-tag">Free Resource</p>
+      <h2 class="lm-title">《2026年<em>中小企業主</em><br>政府資源完整指南》</h2>
+      <p class="lm-desc">一份一頁報告，告訴你今年台灣中小企業最值得申請的補助、標案和政策貸款，以及最常見的5個申請死法。</p>
+      <ul class="lm-list">
+        <li>2026年開放中的10個高核定率補助計畫</li>
+        <li>廢標最常見的5個行政地雷（附自查清單）</li>
+        <li>政策性貸款 vs 一般商業貸款利率比較表</li>
+        <li>「三位一體」資金槓桿操作步驟</li>
+        <li>你的公司適合從哪個資源開始的快速判斷表</li>
+      </ul>
+    </div>
+    <div class="lm-form-box">
+      <h3>免費領取一頁報告</h3>
+      <p>填寫後透過 LINE 即時發送，30 秒收到</p>
+      <input type="text" class="lm-input" placeholder="您的姓名（稱呼即可）" id="lm-name">
+      <input type="text" class="lm-input" placeholder="公司產業（如：製造業、新創）" id="lm-industry">
+      <button class="lm-submit" onclick="submitLeadMagnet()">📄 立即免費領取報告 →</button>
+      <p class="lm-privacy">送出後將透過 LINE 發送報告 · 不會用於行銷以外用途</p>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
 <section class="services" id="services">
@@ -938,6 +1165,71 @@ footer a:hover { color: var(--gold); }
   </div>
 </section>
 
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <div class="container">
+    <p class="section-tag reveal">✦ 知識庫</p>
+    <h2 class="section-title reveal">老闆必看的<br><em>實戰文章</em></h2>
+    <p class="section-sub reveal">不賣弄術語，只說你聽得懂、用得上的乾貨。每週更新，訂閱 LINE 第一時間通知。</p>
+    <div class="blog-grid reveal">
+
+      <!-- 精選文章（大） -->
+      <a href="https://line.me/R/ti/p/@orw4753q" class="blog-card blog-featured" target="_blank">
+        <div class="blog-featured-img">💰</div>
+        <div class="blog-featured-body">
+          <span class="blog-cat">✦ 精選必讀</span>
+          <h3 class="blog-title">你的競爭對手正在用你不知道的方法拿走政府的錢</h3>
+          <p class="blog-excerpt">台灣每年兆元政府預算，流向中小企業的補助、標案、政策貸款加起來數字驚人。但大多數老闆只拿到了其中一種，甚至一種都沒拿到。這篇告訴你三種錢怎麼同時拿、互相加乘。</p>
+          <div class="blog-read-more" style="color:var(--gold2);">閱讀全文 →</div>
+        </div>
+      </a>
+
+      <!-- 文章1 -->
+      <a href="https://line.me/R/ti/p/@orw4753q" class="blog-card" target="_blank">
+        <div class="blog-card-top">
+          <span class="blog-cat">✦ 標案教學</span>
+          <h3 class="blog-title">廢標最常見的5個行政地雷，老闆自己不知道才最危險</h3>
+          <p class="blog-excerpt">一個大章蓋錯位置，50頁建議書直接廢件。不是你的服務不好，是行政細節殺死你。這5個地雷，每個都是真實案例。</p>
+        </div>
+        <div class="blog-card-bottom">
+          <span class="blog-date">2026.03</span>
+          <span class="blog-read-more">閱讀全文 →</span>
+        </div>
+      </a>
+
+      <!-- 文章2 -->
+      <a href="https://line.me/R/ti/p/@orw4753q" class="blog-card" target="_blank">
+        <div class="blog-card-top">
+          <span class="blog-cat">✦ 補助案攻略</span>
+          <h3 class="blog-title">SBIR、SITI、SIIR 傻傻分不清？三分鐘看懂哪個最適合你</h3>
+          <p class="blog-excerpt">名字看起來像亂碼，但每個補助的目標對象和金額差很多。製造業、新創、服務業各有最對應的計畫，選錯了寫再好也沒用。</p>
+        </div>
+        <div class="blog-card-bottom">
+          <span class="blog-date">2026.03</span>
+          <span class="blog-read-more">閱讀全文 →</span>
+        </div>
+      </a>
+
+      <!-- 文章3 -->
+      <a href="https://line.me/R/ti/p/@orw4753q" class="blog-card" target="_blank">
+        <div class="blog-card-top">
+          <span class="blog-cat">✦ 貸款策略</span>
+          <h3 class="blog-title">拿到標案合約之後，下一步應該是去銀行，不是慶祝</h3>
+          <p class="blog-excerpt">政府合約是最強的信用證明。很多老闆得標了，卻不知道可以拿它去談低利融資。這篇教你怎麼用合約槓桿出資金，讓一個案子變三層收益。</p>
+        </div>
+        <div class="blog-card-bottom">
+          <span class="blog-date">2026.02</span>
+          <span class="blog-read-more">閱讀全文 →</span>
+        </div>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="https://line.me/R/ti/p/@orw4753q" class="blog-more-btn" target="_blank">訂閱 LINE，每週收到最新文章 →</a>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="container">
@@ -1057,6 +1349,14 @@ footer a:hover { color: var(--gold); }
 </a>
 
 <script>
+// Lead Magnet Submit
+function submitLeadMagnet() {
+  const name = document.getElementById('lm-name').value.trim();
+  const industry = document.getElementById('lm-industry').value.trim();
+  const msg = encodeURIComponent(`您好，我想免費領取《2026年中小企業主政府資源完整指南》。\n姓名：${name || '未填寫'}\n產業：${industry || '未填寫'}`);
+  window.open(`https://line.me/R/ti/p/@orw4753q?text=${msg}`, '_blank');
+}
+
 // FAQ toggle
 function toggleFaq(btn) {
   const item = btn.parentElement;
