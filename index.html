@@ -307,34 +307,68 @@ section { padding: 100px 40px; }
 .service-list li::before { content: '→'; color: var(--gold); flex-shrink: 0; }
 
 /* ── HOW IT WORKS ── */
-.process { background: var(--paper); }
-.process-steps { display: grid; gap: 0; }
+.process { background: var(--ink); }
+.process .section-tag { color: var(--gold); }
+.process .section-title { color: var(--paper); }
+.process .section-sub { color: rgba(245,240,232,0.55); }
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+  margin-top: 20px;
+}
+.process-connector {
+  position: absolute;
+  top: 40px; left: calc(10% + 32px); right: calc(10% + 32px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(196,151,58,0.35) 20%, rgba(196,151,58,0.35) 80%, transparent 100%);
+  z-index: 0;
+  pointer-events: none;
+}
 .step {
-  display: grid; grid-template-columns: 80px 1fr;
-  border-bottom: 1px solid var(--rule);
-  padding: 40px 0;
-  gap: 32px; align-items: start;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
+  padding: 0 12px 32px;
+  position: relative; z-index: 1;
+  border-bottom: none;
+  gap: 0;
 }
-.step:last-child { border-bottom: none; }
-.step-num {
+.step-circle {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 10px rgba(196,151,58,0.10), 0 4px 20px rgba(196,151,58,0.25);
+  transition: transform 0.25s;
+}
+.step:hover .step-circle { transform: translateY(-4px); }
+.step-circle-num {
   font-family: 'DM Serif Display', serif;
-  font-size: 56px; color: var(--rule);
-  line-height: 1; padding-top: 4px;
+  font-size: 26px; font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
 }
-.step-content {}
+.step-content { flex: 1; }
 .step-title {
   font-family: 'Noto Serif TC', serif;
-  font-size: 20px; font-weight: 700;
+  font-size: 14px; font-weight: 700;
   margin-bottom: 10px;
+  color: var(--paper);
+  line-height: 1.5;
 }
-.step-desc { font-size: 14px; line-height: 1.85; color: var(--muted); }
+.step-desc { font-size: 12px; line-height: 1.85; color: rgba(245,240,232,0.45); }
 .step-badge {
-  display: inline-block; margin-top: 12px;
+  display: inline-block; margin-top: 14px;
   font-family: 'Space Mono', monospace;
-  font-size: 10px; letter-spacing: 0.1em;
-  padding: 4px 12px;
-  background: var(--ink); color: var(--gold2);
-  border-radius: 2px;
+  font-size: 9px; letter-spacing: 0.08em;
+  padding: 5px 12px;
+  background: rgba(196,151,58,0.12);
+  color: var(--gold2);
+  border: 1px solid rgba(196,151,58,0.25);
+  border-radius: 20px;
 }
 
 /* ── WHY ROY ── */
@@ -802,11 +836,155 @@ footer a:hover { color: var(--gold); }
 }
 .blog-more-btn:hover { border-color: var(--gold); color: var(--gold); }
 
+/* ── PRICING TIER TABLE ── */
+.price-tier-wrap {
+  margin: 16px 0 24px;
+  overflow-x: auto;
+}
+.price-tier-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  font-family: 'Space Mono', monospace;
+}
+.price-tier-table th {
+  background: rgba(196,151,58,0.15);
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  padding: 10px 8px;
+  text-align: left;
+  border-bottom: 1px solid rgba(196,151,58,0.3);
+}
+.price-tier-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  color: rgba(245,240,232,0.75);
+  line-height: 1.5;
+  vertical-align: top;
+}
+.price-tier-table tr:last-child td { border-bottom: none; }
+.price-tier-table .td-highlight { color: var(--gold2); font-weight: 700; }
+.price-tier-table .td-range { color: rgba(245,240,232,0.45); font-size: 11px; }
+.price-note-legal {
+  font-size: 11px;
+  color: rgba(245,240,232,0.35);
+  font-family: 'Space Mono', monospace;
+  letter-spacing: 0.04em;
+  margin-top: 12px;
+  line-height: 1.6;
+  border-left: 2px solid rgba(196,151,58,0.3);
+  padding-left: 12px;
+}
+.price-addon {
+  background: rgba(196,151,58,0.08);
+  border: 1px dashed rgba(196,151,58,0.3);
+  border-radius: 4px;
+  padding: 12px 14px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: rgba(245,240,232,0.65);
+  line-height: 1.6;
+}
+.price-addon strong { color: var(--gold2); }
+
 @media (max-width: 768px) {
-  .lead-magnet .container { grid-template-columns: 1fr; gap: 40px; }
-  .blog-grid { grid-template-columns: 1fr; }
+  /* ── TOPBAR ── */
+  .topbar { padding: 0 16px; gap: 8px; }
+  .topbar-nav { display: none; }
+  .topbar > div:last-child { gap: 6px; }
+  .topbar-cta { padding: 6px 10px; font-size: 10px; letter-spacing: 0.03em; }
+
+  /* ── HERO ── */
+  .hero { padding: 90px 20px 60px; }
+  .hero-btns { flex-direction: column; align-items: center; gap: 12px; }
+  .btn-primary, .btn-line { width: 100%; max-width: 300px; text-align: center; justify-content: center; }
+  .hero-stats { flex-wrap: wrap; max-width: 100%; }
+  .stat { min-width: 45%; border-right: none !important; border-bottom: 1px solid var(--rule); padding: 14px 8px; }
+  .stat:nth-child(odd) { border-right: 1px solid var(--rule) !important; }
+  .stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
+  .stat-num { font-size: 28px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 60px 20px; }
+  .container { padding: 0; }
+  .section-title { font-size: clamp(26px, 7vw, 38px); }
+
+  /* ── SERVICES ── */
+  .services-grid { grid-template-columns: 1fr; gap: 0; }
+  .service-card { border-right: none; border-bottom: 1px solid var(--rule); padding: 32px 24px; }
+  .service-card:last-child { border-bottom: none; }
+
+  /* ── PROCESS ── */
+  .process { padding: 60px 20px; }
+  .process-steps { grid-template-columns: 1fr; gap: 0; }
+  .process-connector { display: none; }
+  .step {
+    flex-direction: row;
+    text-align: left;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    gap: 18px;
+    align-items: flex-start;
+  }
+  .step:last-child { border-bottom: none; padding-bottom: 0; }
+  .step-circle { width: 52px; height: 52px; margin-bottom: 0; flex-shrink: 0; box-shadow: none; }
+  .step-circle-num { font-size: 18px; }
+  .step-title { font-size: 14px; text-align: left; }
+  .step-desc { font-size: 12px; text-align: left; }
+
+  /* ── WHY ROY ── */
+  .why-grid { grid-template-columns: 1fr; border: none; }
+  .why-card { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important; padding: 28px 20px; }
+  .why-card:last-child { border-bottom: none !important; }
+
+  /* ── PRICING ── */
+  .pricing-grid { grid-template-columns: 1fr; border: none; gap: 16px; }
+  .price-card { border-right: none; border-bottom: none; border: 1px solid var(--rule); border-radius: 4px; padding: 28px 24px; }
+  .price-card.featured { border-color: var(--gold); }
+  .price-tier-table { font-size: 11px; }
+  .price-tier-table th, .price-tier-table td { padding: 8px 6px; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-card { border-right: none; border-bottom: 1px solid var(--rule); }
+  .testi-card:last-child { border-bottom: none; }
+
+  /* ── LEAD MAGNET ── */
+  .lead-magnet { padding: 60px 20px; }
+  .lead-magnet .container { grid-template-columns: 1fr; gap: 32px; }
+  .lm-form-box { padding: 24px 18px; }
+
+  /* ── BLOG ── */
+  .blog-grid { grid-template-columns: 1fr; gap: 16px; }
   .blog-featured { grid-column: span 1; grid-template-columns: 1fr; }
   .blog-featured-img { display: none; }
+  .blog-featured-body { padding: 28px 24px; }
+
+  /* ── FAQ ── */
+  .faq-q { font-size: 15px; padding: 18px 0; }
+
+  /* ── CTA ── */
+  .cta-section { padding: 80px 20px; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .btn-cta-main, .btn-cta-line { width: 100%; max-width: 300px; text-align: center; justify-content: center; }
+
+  /* ── CONTACT ── */
+  .contact-strip { padding: 48px 20px; }
+  .contact-inner { flex-direction: column; gap: 24px; }
+  .contact-quote { max-width: 100%; }
+
+  /* ── FOOTER ── */
+  footer { padding: 24px 20px; flex-direction: column; text-align: center; gap: 8px; }
+
+  /* ── FLOAT BUBBLE ── */
+  .float-bubble { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(40px, 12vw, 60px); }
+  .topbar-cta:first-child { display: none; }
+  .stat { min-width: 48%; }
 }
 </style>
 </head>
@@ -987,46 +1165,63 @@ footer a:hover { color: var(--gold); }
     <h2 class="section-title reveal">簡單五步驟，<br><em>讓錢自動來找你</em></h2>
     <p class="section-sub reveal">我們把複雜的政府申請流程，化為清晰的五個階段，每個階段都有明確交付物和時間承諾。</p>
     <div class="process-steps reveal">
+      <div class="process-connector"></div>
+
       <div class="step">
-        <div class="step-num">01</div>
+        <div class="step-circle">
+          <span class="step-circle-num">01</span>
+        </div>
         <div class="step-content">
-          <h3 class="step-title">免費企業體質診斷（30分鐘）</h3>
-          <p class="step-desc">透過 LINE 視訊或表單，快速確認您的公司設籍地、資本額、員工數、欠稅狀況等關鍵資格。我們在 24 小時內告訴您：最適合您的補助案/標案是哪幾個，以及成功機率預估。</p>
+          <h3 class="step-title">免費企業體質診斷</h3>
+          <p class="step-desc">快速確認設籍地、資本額、員工數、欠稅狀況，24小時內告訴您適合哪幾個案子及成功機率。</p>
           <span class="step-badge">⚡ 24H 回覆</span>
         </div>
       </div>
+
       <div class="step">
-        <div class="step-num">02</div>
+        <div class="step-circle">
+          <span class="step-circle-num">02</span>
+        </div>
         <div class="step-content">
           <h3 class="step-title">策略制定・簽約啟動</h3>
-          <p class="step-desc">確認合作方案後，我們提供完整的《標案顧問服務合約》保障雙方權益，前金確認後 48 小時內正式啟動。合約明確規範工作範圍、修改次數、費用結構與責任限制。</p>
+          <p class="step-desc">提供完整合約保障雙方權益，前金確認後48小時內正式啟動，明確規範工作範圍與費用。</p>
           <span class="step-badge">🛡️ 合約保障</span>
         </div>
       </div>
+
       <div class="step">
-        <div class="step-num">03</div>
+        <div class="step-circle">
+          <span class="step-circle-num">03</span>
+        </div>
         <div class="step-content">
           <h3 class="step-title">深度訪談・資料收集</h3>
-          <p class="step-desc">透過 LINE 視訊進行「腦力壓榨訪談」（60分鐘），把您腦袋裡的技術優勢和過往實績，轉化成評委看得懂、評分機制喜歡的語言。我們有系統性的訪談框架，您只需要回答問題。</p>
+          <p class="step-desc">60分鐘腦力壓榨訪談，把您的技術優勢轉化成評委看得懂、評分機制喜歡的語言。</p>
           <span class="step-badge">🎙️ 專業訪談框架</span>
         </div>
       </div>
+
       <div class="step">
-        <div class="step-num">04</div>
+        <div class="step-circle">
+          <span class="step-circle-num">04</span>
+        </div>
         <div class="step-content">
           <h3 class="step-title">文件撰寫・三層品管</h3>
-          <p class="step-desc">初稿在 D+5 交付，包含完整章節架構。經過 AI 審查 × 法規合規掃描 × 人工複審三層品管後，確保每一份文件都能通過行政審查，不讓廢標風險浮現在最後一刻。</p>
+          <p class="step-desc">D+5 交付初稿，歷經 AI審查 × 法規掃描 × 人工複審三關，確保行政零廢標。</p>
           <span class="step-badge">📝 D+5 初稿交件</span>
         </div>
       </div>
+
       <div class="step">
-        <div class="step-num">05</div>
+        <div class="step-circle" style="background:var(--forest);box-shadow:0 0 0 10px rgba(42,74,62,0.15),0 4px 20px rgba(42,74,62,0.3);">
+          <span class="step-circle-num" style="color:var(--gold2);">05</span>
+        </div>
         <div class="step-content">
-          <h3 class="step-title">修改定稿・評選輔導・送件</h3>
-          <p class="step-desc">含兩次修改，定稿後提供評選現場「5題魔鬼提問」演練和簡報腳本。截標當日全天待機支援，讓您走進評選室時自信滿滿。結案後提供後續補助串聯建議。</p>
+          <h3 class="step-title">評選輔導・截標送件</h3>
+          <p class="step-desc">含兩次修改，5題魔鬼提問演練，截標當日全天待機，讓您走進評選室時自信滿滿。</p>
           <span class="step-badge">🏆 截標日全天待機</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1066,45 +1261,97 @@ footer a:hover { color: var(--gold); }
 <section class="pricing" id="pricing">
   <div class="container">
     <p class="section-tag reveal">✦ Service Plans</p>
-    <h2 class="section-title reveal">透明定價，<br><em>沒有隱藏費用</em></h2>
-    <p class="section-sub reveal">所有方案均採「前金啟動，成功報酬後付」模式。您的利益就是我們的利益。</p>
+    <h2 class="section-title reveal">透明定價，<br><em>規模越大越划算</em></h2>
+    <p class="section-sub reveal">依標案規模自動調整，你的收益越高，我們的服務費才跟著合理增長。所有方案均採「前金啟動，結案績效諮詢費後付」模式。</p>
     <div class="pricing-grid reveal">
+
+      <!-- Plan A -->
       <div class="price-card">
         <p class="price-label">✦ Plan A</p>
         <h3 class="price-name">戰略診斷</h3>
-        <div class="price-amount">NT$3,000<span style="font-size:18px;color:var(--muted)"> 起</span></div>
-        <p class="price-note">適合：初次評估，尚未決定是否投標</p>
+        <div class="price-amount">NT$5,800<span style="font-size:18px;color:var(--muted)"> 起</span></div>
+        <p class="price-note">可全額折抵 Plan B 服務費｜適合初次評估，尚未決定是否投標</p>
         <ul class="price-features">
           <li>RFP 快速掃描（5大生死關鍵）</li>
           <li>行政門檻適格性診斷</li>
           <li>競爭態勢初步評估</li>
           <li>投/不投/觀望 專業建議報告</li>
+          <li>AI 競爭對手歷史決標分析</li>
           <li>48小時內交件</li>
         </ul>
+        <div class="price-addon">
+          <strong>💡 幾乎零邊際成本：</strong>AI 系統10分鐘產出完整報告，這 $5,800 是你篩選優質客戶、同時賺到的純利。
+        </div>
         <a href="https://line.me/ti/p/4yhQs2EDCK" class="price-cta" target="_blank">開始諮詢</a>
       </div>
+
+      <!-- Plan B -->
       <div class="price-card featured">
-        <p class="price-label">✦ Plan B — 最受歡迎</p>
+        <p class="price-label">✦ Plan B — 利潤中心</p>
         <h3 class="price-name">奪標全包</h3>
-        <div class="price-amount">NT$45,000<span style="font-size:18px;color:rgba(245,240,232,0.5)"> 起</span></div>
-        <p class="price-note">前金 50% 啟動 + 專案績效諮詢費（顧問諮詢之延續費用）</p>
-        <ul class="price-features">
+        <div class="price-amount">依規模計費<span style="font-size:16px;color:rgba(245,240,232,0.5)">（見下表）</span></div>
+        <p class="price-note">固定執行費 + 結案績效諮詢費（決標後付）</p>
+
+        <div class="price-tier-wrap">
+          <table class="price-tier-table">
+            <thead>
+              <tr>
+                <th>標案預算</th>
+                <th>執行費（前金）</th>
+                <th>績效諮詢費</th>
+                <th>你的總收益</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="td-range">200萬以下</td>
+                <td class="td-highlight">$45,000</td>
+                <td>1–2%</td>
+                <td class="td-highlight">$6.5–8.5萬</td>
+              </tr>
+              <tr>
+                <td class="td-range">200–500萬</td>
+                <td class="td-highlight">$80,000</td>
+                <td>1.5%</td>
+                <td class="td-highlight">$11–15.5萬</td>
+              </tr>
+              <tr>
+                <td class="td-range">500–1,000萬</td>
+                <td class="td-highlight">$150,000</td>
+                <td>1%</td>
+                <td class="td-highlight">$20–25萬</td>
+              </tr>
+              <tr>
+                <td class="td-range">1,000萬以上</td>
+                <td class="td-highlight">專案議價</td>
+                <td>0.5–1%</td>
+                <td class="td-highlight">$30萬起</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="price-note-legal">※ 績效諮詢費於合約中載明為「結案績效諮詢費」，符合法律規範，避免採購法灰色地帶。</p>
+
+        <ul class="price-features" style="margin-top:16px;">
           <li>包含 Plan A 全部服務</li>
           <li>服務建議書完整撰寫</li>
+          <li>AI 競爭對手情報監控（贈）</li>
           <li>三套緊急應變 SOP</li>
           <li>採購法合規逐條審查</li>
           <li>評選問答演練 × 5題</li>
           <li>簡報腳本大綱（10分鐘版）</li>
-          <li>計畫書修改 × 2次</li>
           <li>截標日全天待機支援</li>
         </ul>
         <a href="https://line.me/ti/p/4yhQs2EDCK" class="price-cta" target="_blank">立即預約</a>
       </div>
+
+      <!-- Plan C -->
       <div class="price-card">
         <p class="price-label">✦ Plan C</p>
         <h3 class="price-name">年度顧問陪跑</h3>
         <div class="price-amount">NT$25,000<span style="font-size:18px;color:var(--muted)">/月 起</span></div>
-        <p class="price-note">適合：每年有 3 個以上案件需求（年繳享 9 折）</p>
+        <p class="price-note">每月包含 3 案診斷、20小時諮詢額度｜年繳享 9 折</p>
         <ul class="price-features">
           <li>包含 Plan B 全部服務</li>
           <li>年度無限次診斷諮詢</li>
@@ -1112,10 +1359,15 @@ footer a:hover { color: var(--gold); }
           <li>融資包裝邏輯建議</li>
           <li>結案審計防禦輔導</li>
           <li>月度標案情報報告</li>
+          <li>企業專屬 AI 標案知識庫建置</li>
           <li>LINE 即時諮詢（平日）</li>
         </ul>
+        <div class="price-addon">
+          <strong>🤖 獨家加值：</strong>幫你建立企業專屬 AI 知識庫，把過去的案例餵給系統，讓你公司內部也能初步篩選案子。你買的是「系統」，不是顧問的命。
+        </div>
         <a href="https://line.me/ti/p/4yhQs2EDCK" class="price-cta" target="_blank">了解更多</a>
       </div>
+
     </div>
     <p style="text-align:center;margin-top:32px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.1em;">所有費用均不含稅。正式報價請透過 LINE 洽詢，依案件複雜度調整。</p>
   </div>
